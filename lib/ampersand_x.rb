@@ -1,12 +1,19 @@
 module AmpersandX
   VERSION = "0.0.1"
 
+  UNDEF = [:==]
+  UNDEF_CLASS = UNDEF + [:>, :>=, :<, :<=]
+
   class Proxy
     class << self
+      undef_method(*UNDEF_CLASS)
+
       def method_missing(name, *args)
-        new([name, *args])
+        new([[name, *args]])
       end
     end
+
+    undef_method(*UNDEF)
 
     # Initialize a +Proxy+.
     #
