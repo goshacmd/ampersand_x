@@ -1,8 +1,8 @@
 module AmpersandX
   VERSION = "0.0.2"
 
-  UNDEF = [:==]
-  UNDEF_CLASS = UNDEF + [:>, :>=, :<, :<=]
+  UNDEF = [:==, :!=]
+  UNDEF_CLASS = UNDEF + [:>, :>=, :<, :<=, :name]
 
   class Proxy
     class << self
