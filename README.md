@@ -6,6 +6,9 @@ simplify this and bring expressiveness back to your code.
 You'd use &X in places where you need a simple proc, but are too lazy to
 type `{ |some_object| some_object.property.another > 42 }` yourself.
 
+There is `&:method_name`, but it wouldn't work with method chains and
+arguments to each one. &X tries to fill the gap here.
+
 ```ruby
 Person = Stuct.new(:first, :age)
 
