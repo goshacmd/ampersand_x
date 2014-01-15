@@ -9,6 +9,21 @@ type `{ |some_object| some_object.property.another > 42 }` yourself.
 There is `&:method_name`, but it wouldn't work with method chains and
 arguments to each one. &X tries to fill the gap here.
 
+First, unlike `&:method_name`, `&X` can handle hashes:
+
+```ruby
+people = [ {name: "Patrick"}, {name: "Jane"}, {name: "Jack"}, {name: "Donald"} ]
+
+# &X
+people.map(&X[:name])
+
+# plain ruby
+people.map { |person| person[:name] }
+```
+
+But it does not stop there. You can also apply some predicates on
+objects easily:
+
 ```ruby
 Person = Stuct.new(:first, :age)
 
@@ -26,7 +41,7 @@ people.partition { |person| person.age > 20 }
 people.partition(&X.age > 20)
 ```
 
-You can traverse a long chain of properties as well.
+You can traverse a long chain of method calls too:
 
 ```ruby
 # Suppose we have a Person class with +address+ property,
