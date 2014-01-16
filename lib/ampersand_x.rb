@@ -37,6 +37,10 @@ module AmpersandX
     def to_proc
       -> x { actual(x) }
     end
+
+    def inspect
+      ['x', @path.map(&:to_s).join(' | ')].join(' --> ')
+    end
   end
 end
 
